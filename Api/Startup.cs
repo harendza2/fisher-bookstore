@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Fisher.Bookstore.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Fisher.Bookstore.Api
 {
