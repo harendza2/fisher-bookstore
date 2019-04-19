@@ -27,10 +27,16 @@ namespace Fisher.Bookstore.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<BookstoreContext>(options =>
-            options.UseSqlite(Configuration.GetConnectionString("BookstoreContext")));
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder =>
+                {
+                    builder.WithOrigins("http://localhost:4200")
+                    .AllowAnyMethod()
+                    .AllowAnyOrigin();
+                });
+            }
+            );
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

@@ -1,9 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Fisher.Bookstore.Models;
+using System;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Fisher.Bookstore.Api.Data
 {
-    public class BookstoreContext : DbContext
+    public class BookstoreContext : IdentityDbContext<ApplicationUser>
     {
         public BookstoreContext(DbContextOptions<BookstoreContext> options)
             : base(options)
@@ -12,5 +14,10 @@ namespace Fisher.Bookstore.Api.Data
 
         public DbSet<Book> Books { get; set; }
         public DbSet<Author> Authors {get; set; }
+
+        internal void SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
